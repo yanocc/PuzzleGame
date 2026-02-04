@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI GAMES by yano</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="heart-loader">💖</div>
+            <h2 class="loading-title">JUST & ONLY FOR YOU!!</h2>
+            <div class="loading-message">
+                <p id="loading-text" class="loading-text">Creating your surprise...</p>
+            </div>
+            <div class="loading-bar-container">
+                <div id="loading-bar" class="loading-bar"></div>
+            </div>
+            <p class="loading-percentage"><span id="loading-percent">0</span>%</p>
+        </div>
+    </div>
+
+    <div id="bg-particles" class="bg-particles"></div>
+    <div id="app">
+        <div id="game-screen">
+            <div class="container">
+                <!-- Header -->
+                <div class="header">
+                    <h1 class="title">--CHRISTMAS PUZZLE--</h1>
+                    <p class="subtitle">Mechanics: Drag pieces or click a piece then click a spot on the board!</p>
+                    <p class="subtitle">Complete the puzzle to unlock the next game?</p>
+                    <p class="subtitle">Good luck and enjoy, bebi! I love youu!</p>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button id="undo-btn" class="btn" disabled>
+                        <span class="btn-icon">↶</span>
+                        Undo
+                    </button>
+                    <button id="redo-btn" class="btn" disabled>
+                        <span class="btn-icon">↷</span>
+                        Redo
+                    </button>
+                    <button id="use-hint-btn" class="btn" disabled>
+                        <span class="btn-icon">✨</span>
+                        <span id="hint-text">Use Hint (0)</span>
+                    </button>
+                    <button id="hint-btn" class="btn">
+                        <span class="btn-icon">💡</span>
+                        Show Preview
+                    </button>
+                    <button id="auto-solve-btn">
+                        <span class="btn-icon">🤖</span>
+                        Auto Solve
+                    </button>
+                
+                
+                </div>  
+                    
+
+                <!-- Hint Preview -->
+                <div id="hint-preview" class="hint-preview hidden">
+                    <div class="hint-box">
+                        <p class="hint-text">Here's what you're building:</p>
+                        <canvas id="hint-canvas" class="hint-canvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- Game Area -->
+                <div class="game-area">
+                    <!-- Puzzle Board -->
+                    <div class="board-container">
+                        <h2 class="section-title">Puzzle Board</h2>
+                        <div id="puzzle-board" class="puzzle-board"></div>
+                    </div>
+
+                    <!-- Pieces Pile -->
+                    <div class="pieces-container">
+                        <h2 class="section-title">
+                            Puzzle Pieces (<span id="remaining-count">100</span> remaining)
+                        </h2>
+                        <div id="pieces-pile" class="pieces-pile"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="celebration-screen" class="celebration-screen hidden">
+            <div class="celebration-content">
+                <h1 class="celebration-title">Puzzle's Complete! 🎉</h1>
+                <p class="hangman-instruction">Now, I have a question for you mahal, but first fill in the blanks :3</p>
+                
+                <!-- Hangman Display -->
+                <div class="hangman-game">
+                    <div id="word-display" class="word-display"></div>
+                    
+                    <div class="hangman-info">
+                        <p id="wrong-guesses">Wrong guesses: <span id="wrong-count">0</span>/3</p>
+                    </div>
+                    
+                    <!-- Letter Buttons -->
+                    <div id="letter-buttons" class="letter-buttons"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Message Screen -->
+        <div id="final-screen" class="celebration-screen hidden">
+            <div class="celebration-content">
+                <h1 class="celebration-title">CONGRATS BEBI!<br>You did it Mahal! 🎉</h1>
+
+                <div class="gif-container">
+                    <img src="giphy.gif">
+                </div>
+
+                <div class="final-message">
+                    <p class="message-line1">Ouie, mahal ko,</p>
+                    <p class="message-line2">Will you be Valentine po?</p>
+                </div>
+                
+                <div class="answer-buttons">
+                    <button id="yes-btn" class="yes-btn">
+                        <span class="heart-emoji">💖</span>
+                        YES! 
+                        <span class="heart-emoji">💖</span>
+                    </button>
+                    <button id="maybe-btn" class="maybe-btn">
+                        <span class="thinking-emoji">🤔</span>
+                        No? 
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden Canvas for Image Processing -->
+        <canvas id="main-canvas" style="display: none;"></canvas>
+    </div>
+
+    <!-- Puzzle Music Playlist (rotates through these 4 songs) -->
+    <audio id="puzzle-music-1">
+        <source src="amazinggrace.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="puzzle-music-2">
+        <source src="lambofgod.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="puzzle-music-3">
+        <source src="oceans.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="puzzle-music-4">
+        <source src="whatabeautifulname.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Background music for Hangman and Final screens -->
+    <audio id="bg-music" loop>
+        <source src="bgmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" class="music-control">
+        <span id="music-text" class="music-text">Turn on music &gt;&gt;</span>
+        <button id="music-toggle" class="music-toggle-btn">🔇</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
